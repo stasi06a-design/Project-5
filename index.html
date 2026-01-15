@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AITHIR — Monitoring</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <div class="title">AITHIR — Monitoring</div>
+        <div class="sub">Live Map • Latest • Thermal Hazards</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <span class="pill ok"><span class="dot"></span><span>SIMULATION</span></span>
+      <button class="btn subtle" id="centerBtn" type="button">Center</button>
+      <button class="btn subtle" id="resetBtn" type="button">Reset Map</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="grid">
+      <article class="card mapCard">
+        <div class="cardHead">
+          <h3>Occupancy Map</h3>
+          <span class="tag">LIVE</span>
+        </div>
+
+        <div class="mapWrap">
+          <canvas id="mapCanvas" width="1200" height="680"></canvas>
+
+          <div class="hud">
+            <div class="hudRow"><span class="muted">Robot</span><strong class="mono" id="hudPose">—</strong></div>
+            <div class="hudRow"><span class="muted">Temp</span><strong class="mono" id="hudTemp">—</strong></div>
+            <div class="hudRow"><span class="muted">Map</span><strong class="mono" id="hudMap">—</strong></div>
+          </div>
+        </div>
+
+        <div class="cardFoot">
+          <div class="muted small">
+            Scroll to zoom. Map is unknown/free/wall. (All frontend, no backend.)
+          </div>
+        </div>
+      </article>
+
+      <div class="stack">
+        <article class="card">
+          <div class="cardHead">
+            <h3>Latest Telemetry</h3>
+            <span class="tag" id="freshTag">LIVE</span>
+          </div>
+
+          <div class="kv">
+            <div class="row"><span>Timestamp</span><strong class="mono" id="tTime">—</strong></div>
+            <div class="row"><span>Uptime</span><strong class="mono" id="tUptime">—</strong></div>
+            <div class="row"><span>Battery</span><strong class="mono" id="tBatt">—</strong></div>
+            <div class="row"><span>WiFi RSSI</span><strong class="mono" id="tRssi">—</strong></div>
+            <div class="row"><span>Mode</span><strong class="mono" id="tMode">—</strong></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardHead">
+            <h3>Thermal Hazards</h3>
+            <div class="controls">
+              <button class="btn subtle" id="ackAllBtn" type="button">Ack All</button>
+            </div>
+          </div>
+
+          <div class="list" id="hazList"></div>
+          <div class="empty muted small" id="hazEmpty" hidden>No hazards.</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
